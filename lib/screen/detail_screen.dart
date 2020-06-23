@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone_test/model/model_movie.dart';
 
 class DetailScreen extends StatefulWidget {
-  final Movie movie;
-  DetailScreen({this.movie});
+  final Movie movie; /*Movie 클래스에서 선언된 형식의 파일들을 가져올수 있도록 준비한다 */
+  DetailScreen({this.movie}); /* 생성자를 만든다. */
   _DetailScreenState createState() => _DetailScreenState();
 }
 
@@ -13,7 +13,8 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();
-    like = widget.movie.like;
+    like = widget.movie.like; /* bool 형태의 like를 Movie클래스의 like의 정보를 담기로 한다.
+                                 향후 아래에서 사용될때 적용 되도록 요청한다. like 참인지 거짓인지.*/
   }
 
   @override

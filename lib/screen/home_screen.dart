@@ -9,17 +9,19 @@ class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
-
+// 파이어베이스에 사용될 instance 초기화
+// 파이어베이스의 데이터 타입을 받기 위한 초기화
 class _HomeScreenState extends State<HomeScreen> {
-  Firestore firestore = Firestore.instance;
-  Stream<QuerySnapshot> streamData;
+  Firestore firestore = Firestore.instance;   
+  Stream<QuerySnapshot> streamData; 
 
   @override
   void initState() {
     super.initState();
-    streamData = firestore.collection('movie').snapshots();
+    streamData = firestore.collection('movie').snapshots();    /*파이어베이스에 있는 movie 인스턴스의 map을 가져온다*/
   }
-
+  
+  /*initState를 통해 받기 하는 동안 네트워크로 인해 느려지면 프로그래스를 보여주고 데이터를 받았을경우 화면을 보여줌 */
   Widget _fetchData(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('movie').snapshots(),
@@ -30,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  /* map 형태로 받아온 firestore 자료를 활용해 화면을 구성함 */
   Widget _buildBody(BuildContext context, List<DocumentSnapshot> snapshot) {
     List<Movie> movies = snapshot.map((d) => Movie.fromSnapshot(d)).toList();
     return ListView(

@@ -8,6 +8,7 @@ import 'package:netflix_clone_test/widget/bottom_bar.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
+  
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -17,6 +18,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,  
       title: 'OgusFlix',
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -29,7 +31,7 @@ class _MyAppState extends State<MyApp> {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
-              HomeScreen(),
+              HomeScreen(),            
               SearchScreen(),
               LikeScreen(),
               MoreScreen(),
